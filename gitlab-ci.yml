@@ -1,0 +1,35 @@
+include:
+  - project: 'devops/security-templates/scanners'
+    file: '/.Coverity.gitlab-ci.yml'
+    ref: coverity
+ 
+stages:
+- build
+- test
+ 
+build:
+  image: "maven:3.5.3-jdk-8"
+  stage: build
+ 
+  script:
+    - echo "Build done :)"
+ 
+coverity:
+  extends: .coverity:build:incremental
+  stage: test
+  needs: []
+  variables:
+      BUILD_IMAGE: "maven:3.5.3-jdk-8"
+      BUILD_CMD: "mvn clean install -DskipTests"
+      COVERITY_PROJECT: Sample_project
+      COVERITY_STREAM: Sample_project_master
+
+coverity_full:
+  extends: .coverity:build:full
+  stage: test
+  needs: []
+  variables:
+      BUILD_IMAGE: "maven:3.5.3-jdk-8"
+      BUILD_CMD: "mvn clean install -DskipTests"
+      COVERITY_PROJECT: Sample_project
+      COVERITY_STREAM: Sample_project_master
