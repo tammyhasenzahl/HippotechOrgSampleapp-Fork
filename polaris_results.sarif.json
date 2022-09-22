@@ -1,1 +1,244 @@
-{"$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json", "version": "2.1.0", "runs": [{"results": [{"ruleId": "RESOURCE_LEAK/resource_leak|java", "message": {"text": "Resource leak: The system resource will not be reclaimed and reused, reducing the future availability of the resource."}, "locations": [{"physicalLocation": {"artifactLocation": {"uri": "src/main/java/com/example/SQL/SQLInjection.java"}, "region": {"startLine": ""}}}], "partialFingerprints": {"primaryLocationLineHash": "0b0ff2f794ea7c4b537595a9f8f4d09017dfe48651c4ff3fc145cc1755156187"}, "codeFlows": [{"threadFlows": [{}]}]}, {"ruleId": "SQLI/sql_injection:sink|java", "message": {"text": "SQL injection: A user can change the intent of the SQL query, which may inappropriately disclose or corrupt data within the database."}, "locations": [{"physicalLocation": {"artifactLocation": {"uri": "src/main/java/com/example/SQL/Source.java"}, "region": {"startLine": ""}}}], "partialFingerprints": {"primaryLocationLineHash": "21d096d0fc8a2d3171c4155f2ddd5ed508dfd062b712be9f27f2518517eb74e4"}, "codeFlows": [{"threadFlows": [{}]}]}, {"ruleId": "NULL_RETURNS/null_pointer_dereference_exception:return_value|java", "message": {"text": "Dereference null return value: If the function actually returns a null value, a NullPointerException will be thrown."}, "locations": [{"physicalLocation": {"artifactLocation": {"uri": "src/main/java/com/example/SQL/Source.java"}, "region": {"startLine": ""}}}], "partialFingerprints": {"primaryLocationLineHash": "4e034a413bbfa08d6f6134b253977c1d8e6d353f9ad9399699d45f0cc347f701"}, "codeFlows": [{"threadFlows": [{}]}]}, {"ruleId": "SIGMA.empty_password_core_java_sql/sigma.empty_password:core_java_sql|java", "message": {"text": "Empty Password: The application creates a database connection using an empty password string. An attacker who  guesses or otherwise obtains a username with an empty password needs no further information to  authenticate to the database and access protected data."}, "locations": [{"physicalLocation": {"artifactLocation": {"uri": "src/main/java/com/example/SQL/SQLInjection.java"}, "region": {"startLine": ""}}}], "partialFingerprints": {"primaryLocationLineHash": "752654d17ccba178dd15a6fd9ace1011e250a2ee980bb2a8266611ed374c4478"}, "codeFlows": [{"threadFlows": [{}]}]}, {"ruleId": "RESOURCE_LEAK/resource_leak|java", "message": {"text": "Resource leak: The system resource will not be reclaimed and reused, reducing the future availability of the resource."}, "locations": [{"physicalLocation": {"artifactLocation": {"uri": "src/main/java/com/example/SQL/SQLInjection.java"}, "region": {"startLine": ""}}}], "partialFingerprints": {"primaryLocationLineHash": "aa8abc3dfc030f67cd800d7eb7016d3b96922f614fe4d6018d8793d381edc390"}, "codeFlows": [{"threadFlows": [{}]}]}], "tool": {"driver": {"name": "Polaris", "informationUri": "https://sipse.polaris.synopsys.com", "organization": "Synopsys", "rules": [{"id": "RESOURCE_LEAK/resource_leak|java", "shortDescription": {"text": "Leak of a system resource"}, "fullDescription": {"text": "The system resource will not be reclaimed and reused, reducing the future availability of the resource."}, "defaultConfiguration": {"level": "error"}, "properties": {"tags": []}}, {"id": "SQLI/sql_injection:sink|java", "shortDescription": {"text": "Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering."}, "fullDescription": {"text": "A user can change the intent of the SQL query, which may inappropriately disclose or corrupt data within the database."}, "defaultConfiguration": {"level": "error"}, "properties": {"tags": []}}, {"id": "NULL_RETURNS/null_pointer_dereference_exception:return_value|java", "shortDescription": {"text": "Return value of function which returns null is dereferenced without checking"}, "fullDescription": {"text": "If the function actually returns a null value, a NullPointerException will be thrown."}, "defaultConfiguration": {"level": "warning"}, "properties": {"tags": []}}, {"id": "SIGMA.empty_password_core_java_sql/sigma.empty_password:core_java_sql|java", "shortDescription": {"text": "The application creates a database connection using an empty password string. An attacker who  guesses or otherwise obtains a username with an empty password needs no further information to  authenticate to the database and access protected data."}, "fullDescription": {"text": null}, "defaultConfiguration": {"level": "error"}, "properties": {"tags": []}}]}}}]}
+{
+   "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+   "version": "2.1.0",
+   "runs": [
+      {
+         "results": [
+            {
+               "ruleId": "0b0ff2f794ea7c4b537595a9f8f4d09017dfe48651c4ff3fc145cc1755156187",
+               "message": {
+                  "text": "Resource leak: The system resource will not be reclaimed and reused, reducing the future availability of the resource."
+               },
+               "locations": [
+                  {
+                     "physicalLocation": {
+                        "artifactLocation": {
+                           "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                        },
+                        "region": {
+                           "startLine": ""
+                        }
+                     }
+                  }
+               ],
+               "partialFingerprints": {
+                  "primaryLocationLineHash": "0b0ff2f794ea7c4b537595a9f8f4d09017dfe48651c4ff3fc145cc1755156187"
+               },
+               "codeFlows": [
+                  {
+                     "threadFlows": [
+                        {}
+                     ]
+                  }
+               ]
+            },
+            {
+               "ruleId": "21d096d0fc8a2d3171c4155f2ddd5ed508dfd062b712be9f27f2518517eb74e4",
+               "message": {
+                  "text": "SQL injection: A user can change the intent of the SQL query, which may inappropriately disclose or corrupt data within the database."
+               },
+               "locations": [
+                  {
+                     "physicalLocation": {
+                        "artifactLocation": {
+                           "uri": "src/main/java/com/example/SQL/Source.java"
+                        },
+                        "region": {
+                           "startLine": ""
+                        }
+                     }
+                  }
+               ],
+               "partialFingerprints": {
+                  "primaryLocationLineHash": "21d096d0fc8a2d3171c4155f2ddd5ed508dfd062b712be9f27f2518517eb74e4"
+               },
+               "codeFlows": [
+                  {
+                     "threadFlows": [
+                        {}
+                     ]
+                  }
+               ]
+            },
+            {
+               "ruleId": "4e034a413bbfa08d6f6134b253977c1d8e6d353f9ad9399699d45f0cc347f701",
+               "message": {
+                  "text": "Dereference null return value: If the function actually returns a null value, a NullPointerException will be thrown."
+               },
+               "locations": [
+                  {
+                     "physicalLocation": {
+                        "artifactLocation": {
+                           "uri": "src/main/java/com/example/SQL/Source.java"
+                        },
+                        "region": {
+                           "startLine": ""
+                        }
+                     }
+                  }
+               ],
+               "partialFingerprints": {
+                  "primaryLocationLineHash": "4e034a413bbfa08d6f6134b253977c1d8e6d353f9ad9399699d45f0cc347f701"
+               },
+               "codeFlows": [
+                  {
+                     "threadFlows": [
+                        {}
+                     ]
+                  }
+               ]
+            },
+            {
+               "ruleId": "752654d17ccba178dd15a6fd9ace1011e250a2ee980bb2a8266611ed374c4478",
+               "message": {
+                  "text": "Empty Password: The application creates a database connection using an empty password string. An attacker who  guesses or otherwise obtains a username with an empty password needs no further information to  authenticate to the database and access protected data."
+               },
+               "locations": [
+                  {
+                     "physicalLocation": {
+                        "artifactLocation": {
+                           "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                        },
+                        "region": {
+                           "startLine": ""
+                        }
+                     }
+                  }
+               ],
+               "partialFingerprints": {
+                  "primaryLocationLineHash": "752654d17ccba178dd15a6fd9ace1011e250a2ee980bb2a8266611ed374c4478"
+               },
+               "codeFlows": [
+                  {
+                     "threadFlows": [
+                        {}
+                     ]
+                  }
+               ]
+            },
+            {
+               "ruleId": "aa8abc3dfc030f67cd800d7eb7016d3b96922f614fe4d6018d8793d381edc390",
+               "message": {
+                  "text": "Resource leak: The system resource will not be reclaimed and reused, reducing the future availability of the resource."
+               },
+               "locations": [
+                  {
+                     "physicalLocation": {
+                        "artifactLocation": {
+                           "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                        },
+                        "region": {
+                           "startLine": ""
+                        }
+                     }
+                  }
+               ],
+               "partialFingerprints": {
+                  "primaryLocationLineHash": "aa8abc3dfc030f67cd800d7eb7016d3b96922f614fe4d6018d8793d381edc390"
+               },
+               "codeFlows": [
+                  {
+                     "threadFlows": [
+                        {}
+                     ]
+                  }
+               ]
+            }
+         ],
+         "tool": {
+            "driver": {
+               "name": "Polaris",
+               "informationUri": "https://sipse.polaris.synopsys.com",
+               "organization": "Synopsys",
+               "rules": [
+                  {
+                     "id": "0b0ff2f794ea7c4b537595a9f8f4d09017dfe48651c4ff3fc145cc1755156187",
+                     "name": "RESOURCE_LEAK/resource_leak|java",
+                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/668d999a-2c6e-4081-b7f7-63a12a6ee7fd/revisions/c646b130-36a6-47cc-8e80-dc79340478fa/issues/0b0ff2f794ea7c4b537595a9f8f4d09017dfe48651c4ff3fc145cc1755156187",
+                     "shortDescription": {
+                        "text": "Leak of a system resource"
+                     },
+                     "fullDescription": {
+                        "text": "The system resource will not be reclaimed and reused, reducing the future availability of the resource."
+                     },
+                     "defaultConfiguration": {
+                        "level": "error"
+                     },
+                     "properties": {
+                        "tags": []
+                     }
+                  },
+                  {
+                     "id": "21d096d0fc8a2d3171c4155f2ddd5ed508dfd062b712be9f27f2518517eb74e4",
+                     "name": "SQLI/sql_injection:sink|java",
+                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/668d999a-2c6e-4081-b7f7-63a12a6ee7fd/revisions/c646b130-36a6-47cc-8e80-dc79340478fa/issues/21d096d0fc8a2d3171c4155f2ddd5ed508dfd062b712be9f27f2518517eb74e4",
+                     "shortDescription": {
+                        "text": "Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering."
+                     },
+                     "fullDescription": {
+                        "text": "A user can change the intent of the SQL query, which may inappropriately disclose or corrupt data within the database."
+                     },
+                     "defaultConfiguration": {
+                        "level": "error"
+                     },
+                     "properties": {
+                        "tags": []
+                     }
+                  },
+                  {
+                     "id": "4e034a413bbfa08d6f6134b253977c1d8e6d353f9ad9399699d45f0cc347f701",
+                     "name": "NULL_RETURNS/null_pointer_dereference_exception:return_value|java",
+                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/668d999a-2c6e-4081-b7f7-63a12a6ee7fd/revisions/c646b130-36a6-47cc-8e80-dc79340478fa/issues/4e034a413bbfa08d6f6134b253977c1d8e6d353f9ad9399699d45f0cc347f701",
+                     "shortDescription": {
+                        "text": "Return value of function which returns null is dereferenced without checking"
+                     },
+                     "fullDescription": {
+                        "text": "If the function actually returns a null value, a NullPointerException will be thrown."
+                     },
+                     "defaultConfiguration": {
+                        "level": "warning"
+                     },
+                     "properties": {
+                        "tags": []
+                     }
+                  },
+                  {
+                     "id": "752654d17ccba178dd15a6fd9ace1011e250a2ee980bb2a8266611ed374c4478",
+                     "name": "SIGMA.empty_password_core_java_sql/sigma.empty_password:core_java_sql|java",
+                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/668d999a-2c6e-4081-b7f7-63a12a6ee7fd/revisions/c646b130-36a6-47cc-8e80-dc79340478fa/issues/752654d17ccba178dd15a6fd9ace1011e250a2ee980bb2a8266611ed374c4478",
+                     "shortDescription": {
+                        "text": "The application creates a database connection using an empty password string. An attacker who  guesses or otherwise obtains a username with an empty password needs no further information to  authenticate to the database and access protected data."
+                     },
+                     "fullDescription": {
+                        "text": null
+                     },
+                     "defaultConfiguration": {
+                        "level": "error"
+                     },
+                     "properties": {
+                        "tags": []
+                     }
+                  },
+                  {
+                     "id": "aa8abc3dfc030f67cd800d7eb7016d3b96922f614fe4d6018d8793d381edc390",
+                     "name": "RESOURCE_LEAK/resource_leak|java",
+                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/668d999a-2c6e-4081-b7f7-63a12a6ee7fd/revisions/c646b130-36a6-47cc-8e80-dc79340478fa/issues/aa8abc3dfc030f67cd800d7eb7016d3b96922f614fe4d6018d8793d381edc390",
+                     "shortDescription": {
+                        "text": "Leak of a system resource"
+                     },
+                     "fullDescription": {
+                        "text": "The system resource will not be reclaimed and reused, reducing the future availability of the resource."
+                     },
+                     "defaultConfiguration": {
+                        "level": "error"
+                     },
+                     "properties": {
+                        "tags": []
+                     }
+                  }
+               ]
+            }
+         }
+      }
+   ]
+}

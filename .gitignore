@@ -11,3 +11,6 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 .polaris-coverity.zip
 .synopsys/
+idir/
+coverity_results-v10.json
+polaris_results.sarif.json
