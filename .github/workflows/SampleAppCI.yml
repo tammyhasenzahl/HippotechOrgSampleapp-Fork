@@ -18,7 +18,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: 'maven'
-    - name: Build HippoTech Approval Back End with Maven
+    - name: Build with Maven
       run: mvn clean install -DskipTests
       working-directory: .
     #-----------AppSec Analysis START-----------------------------------#
@@ -44,7 +44,7 @@ jobs:
         blackduck_version: ${{github.ref_name}}
         blackduck_sarif: true
         #----------CNC param------------#
-        cnc: false
+        cnc: true
         cnc_url: ${{secrets.CNC_SERVER_URL}}
         cnc_username: ${{secrets.CNC_USERNAME}}
         cnc_passphare: ${{secrets.CNC_PASSPHARE}}
