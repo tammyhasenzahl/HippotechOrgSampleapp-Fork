@@ -50,5 +50,6 @@ jobs:
         cnc_passphare: ${{secrets.CNC_PASSPHARE}}
         cnc_project: sampleapp
         cnc_stream: ${{github.ref_name}}
+        cnc_sarif: true
 
     #-----------AppSec Analysis END-----------------------------------#
