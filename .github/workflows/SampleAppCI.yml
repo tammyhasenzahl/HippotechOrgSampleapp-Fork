@@ -48,7 +48,7 @@ jobs:
         cnc_url: ${{secrets.CNC_SERVER_URL}}
         cnc_username: ${{secrets.CNC_USERNAME}}
         cnc_passphare: ${{secrets.CNC_PASSPHARE}}
-        cnc_project: ${{github.repository}}
+        cnc_project: sampleapp
         cnc_stream: ${{github.ref_name}}
 
     #-----------AppSec Analysis END-----------------------------------#
