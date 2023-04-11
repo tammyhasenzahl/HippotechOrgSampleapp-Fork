@@ -15,7 +15,6 @@ resource "google_bigquery_dataset" "parking" {
 resource "auth0_connection" "sierra" {
   name     = "Sierra-Connection"
   strategy = "auth0"
- 
   options {
     import_mode                    = true
     enabled_database_customization = true
@@ -37,7 +36,6 @@ resource "aws_s3_bucket" "dictionary-west-2" {
     provider = "aws.west_2"
     bucket_prefix = "npk-dictionary-west-2-"
     acl = "private"
- 
     cors_rule {
         allowed_headers = ["*"] #defect
         allowed_methods = ["GET", "HEAD"]
@@ -49,7 +47,6 @@ resource "aws_s3_bucket" "dictionary-west-2" {
 
 resource "aws_cloudfront_distribution" "cloudfront_distribution" {
   enabled = "true"
-  ...
   default_cache_behavior {
     allowed_methods        = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
     cached_methods         = ["GET", "HEAD", "OPTIONS"]
