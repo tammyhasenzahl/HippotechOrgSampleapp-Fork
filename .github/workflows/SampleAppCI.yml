@@ -46,7 +46,7 @@ jobs:
         blackduck_full_scan: true
         blackduck_sarif: true
         #----------CNC param------------#
-        cnc: false
+        cnc: true
         cnc_url: ${{secrets.CNC_SERVER_URL}}
         cnc_username: ${{secrets.CNC_USERNAME}}
         cnc_passphare: ${{secrets.CNC_PASSPHARE}}
