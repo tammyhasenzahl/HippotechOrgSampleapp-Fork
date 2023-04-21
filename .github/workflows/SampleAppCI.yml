@@ -25,7 +25,7 @@ jobs:
     - uses: lejouni/appsec-scan@main
       with:
         #----------common param----------------#
-        build_command: mvn -B -f pom.xml clean package -DazureDevOpsToken=${{secrets.POLARIS_SERVER_URL}}
+        build_command: mvn clean install -DskipTests -Dparam=${{github.repository}}
         log_level: DEBUG
         cache: false
         github_token: ${{secrets.GITHUB_TOKEN}}
