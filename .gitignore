@@ -19,3 +19,5 @@ synopsys-detect-8.8.0.jar
 bd_status/*
 rapid_result_with_policies.sarif.json
 rapid_result_with_policies.sarif.json.debug
+full_result.json
+full_result.json.debug
