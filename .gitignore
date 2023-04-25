@@ -14,3 +14,7 @@ coverity_results-v10.json
 .synopsys/
 idir/
 
+.restconfig.json
+synopsys-detect-8.8.0.jar
+bd_status/*
+rapid_result_with_policies.sarif.json
