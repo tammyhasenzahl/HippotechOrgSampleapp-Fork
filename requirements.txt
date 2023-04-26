@@ -1,0 +1,7 @@
+requests
+pymsteams
+boto3
+blackduck
+suds
+polling
+GitPython
