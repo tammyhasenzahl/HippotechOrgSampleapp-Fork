@@ -47,7 +47,7 @@ jobs:
         blackduck_token: ${{secrets.BLACKDUCK_ACCESS_TOKEN}}
         blackduck_project: ${{github.repository}}
         blackduck_version: ${{github.ref_name}}
-        blackduck_full_scan: false
+        blackduck_full_scan: true
         blackduck_sarif: true
         blackduck_policies: true
         #----------CNC param------------#
