@@ -22,6 +22,9 @@ jobs:
     #   run: mvn clean install -DskipTests
     #   working-directory: .
     #-----------AppSec Analysis START-----------------------------------#
+    - name: Install Pip requirements
+      run: |
+        pip3 install -r requirements.txt
     - uses: lejouni/appsec-scan@main
       with:
         #----------common param----------------#
