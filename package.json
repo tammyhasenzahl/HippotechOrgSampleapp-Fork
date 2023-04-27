@@ -1,6 +1,6 @@
 {
-  "name": "blog",
-  "version": "1.0.0",
+  "name": "sampleapp",
+  "version": "0.0.1-SNAPSHOT",
   "description": "",
   "main": "index.js",
   "scripts": {

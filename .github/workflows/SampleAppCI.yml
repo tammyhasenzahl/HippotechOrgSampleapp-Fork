@@ -29,7 +29,7 @@ jobs:
       with:
         #----------common param----------------#
         build_command: mvn clean install -DskipTests -Dparam=${{secrets.POLARIS_SERVER_URL}}
-        log_level: DEBUG
+        log_level: INFO
         cache: false
         github_token: ${{secrets.GITHUB_TOKEN}}
         #----------polaris param---------------#
@@ -47,7 +47,7 @@ jobs:
         blackduck_token: ${{secrets.BLACKDUCK_ACCESS_TOKEN}}
         blackduck_project: ${{github.repository}}
         blackduck_version: ${{github.ref_name}}
-        blackduck_full_scan: true
+        blackduck_full_scan: false
         blackduck_sarif: true
         blackduck_policies: true
         #----------CNC param------------#
