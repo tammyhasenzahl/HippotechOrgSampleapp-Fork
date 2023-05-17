@@ -12,14 +12,12 @@ buildNumber.properties
 .polaris-coverity.zip
 coverity_results-v10.json
 .synopsys/
-idir/
+idir*/
 
 .restconfig.json
-synopsys-detect-8.8.0.jar
 bd_status/*
 rapid_result_with_policies.sarif.json
 rapid_result_with_policies.sarif.json.debug
 full_result.json
 full_result.json.debug
-synopsys-detect-8.6.0.jar
-synopsys-detect-7.14.0.jar
+.coverity
