@@ -21,3 +21,5 @@ rapid_result_with_policies.sarif.json.debug
 full_result.json
 full_result.json.debug
 .coverity
+component_vulnerabilities.json
+full_result.sarif.json
