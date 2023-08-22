@@ -17,7 +17,7 @@ jobs:
     - uses: synopsys-sig-community/blackduck-sarif-formatter@dev
       with:
         blackduck_url: ${{secrets.BLACKDUCK_SERVER_URL}}
-        blackduck_token: ${{secrets.BLACKDUCK_ACCESS_TOKEN}}
+        blackduck_apiToken: ${{secrets.BLACKDUCK_ACCESS_TOKEN}}
         blackduck_project: ${{github.repository}}
         blackduck_version: ${{github.ref_name}}
         blackduck_outputFile: ${{github.workspace}}/blackduck.sarif.json
