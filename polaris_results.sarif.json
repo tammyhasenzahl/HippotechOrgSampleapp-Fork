@@ -5,10 +5,10 @@
       {
          "results": [
             {
-               "ruleId": "0b0ff2f794ea7c4b537595a9f8f4d09017dfe48651c4ff3fc145cc1755156187",
                "message": {
-                  "text": "Resource leak: The system resource will not be reclaimed and reused, reducing the future availability of the resource."
+                  "text": "[See in Polaris](http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/5c71bed4-20df-4df0-b91a-68a42a3d202f/revisions/8b9cb7c2-ecf6-4ca2-84d5-60e724d4d5f2/issues/0b0ff2f794ea7c4b537595a9f8f4d09017dfe48651c4ff3fc145cc1755156187)\nLeak of a system resource\n\n"
                },
+               "ruleId": "RESOURCE_LEAK/resource_leak|java",
                "locations": [
                   {
                      "physicalLocation": {
@@ -16,27 +16,174 @@
                            "uri": "src/main/java/com/example/SQL/SQLInjection.java"
                         },
                         "region": {
-                           "startLine": ""
+                           "startLine": 46
                         }
                      }
                   }
                ],
                "partialFingerprints": {
-                  "primaryLocationLineHash": "0b0ff2f794ea7c4b537595a9f8f4d09017dfe48651c4ff3fc145cc1755156187"
+                  "primaryLocationLineHash": "c1db1fd2aca14997fc4e3162f3de61eb016b47462b20dbef929e9c43d7337dfa"
                },
                "codeFlows": [
                   {
                      "threadFlows": [
-                        {}
+                        {
+                           "locations": [
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 46,
+                                          "endLine": 46
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 1: An open JDBC connection is returned from \"getConnection\"."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 21,
+                                          "endLine": 22
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 2: Assigning: \"conn\" = JDBC connection returned from \"java.sql.DriverManager.getConnection(\"\", \"\", \"\")\"."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 23,
+                                          "endLine": 24
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 3: Resource \"conn\" is not closed or saved in \"createStatement\"."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 29,
+                                          "endLine": 30
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 4: Condition \"rset != null\", taking true branch."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 46,
+                                          "endLine": 46
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 5: Condition \"rset.next()\", taking true branch."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 33,
+                                          "endLine": 34
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 6: Jumping back to the beginning of the loop."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 31,
+                                          "endLine": 32
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 7: Condition \"rset.next()\", taking false branch."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 35,
+                                          "endLine": 36
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 8: Falling through to end of try statement."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 41,
+                                          "endLine": 45
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 9: Variable \"conn\" going out of scope leaks the connection it holds open."
+                                    }
+                                 }
+                              }
+                           ]
+                        }
                      ]
                   }
                ]
             },
             {
-               "ruleId": "21d096d0fc8a2d3171c4155f2ddd5ed508dfd062b712be9f27f2518517eb74e4",
                "message": {
-                  "text": "SQL injection: A user can change the intent of the SQL query, which may inappropriately disclose or corrupt data within the database."
+                  "text": "[See in Polaris](http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/5c71bed4-20df-4df0-b91a-68a42a3d202f/revisions/8b9cb7c2-ecf6-4ca2-84d5-60e724d4d5f2/issues/21d096d0fc8a2d3171c4155f2ddd5ed508dfd062b712be9f27f2518517eb74e4)\nUntrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering.\n\n"
                },
+               "ruleId": "SQLI/sql_injection:sink|java",
                "locations": [
                   {
                      "physicalLocation": {
@@ -44,27 +191,78 @@
                            "uri": "src/main/java/com/example/SQL/Source.java"
                         },
                         "region": {
-                           "startLine": ""
+                           "startLine": 12
                         }
                      }
                   }
                ],
                "partialFingerprints": {
-                  "primaryLocationLineHash": "21d096d0fc8a2d3171c4155f2ddd5ed508dfd062b712be9f27f2518517eb74e4"
+                  "primaryLocationLineHash": "7e94c3cdc43b02997f449b09a7264f2d25117648aa103350928af13191688cd8"
                },
                "codeFlows": [
                   {
                      "threadFlows": [
-                        {}
+                        {
+                           "locations": [
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/Source.java"
+                                       },
+                                       "region": {
+                                          "startLine": 7,
+                                          "endLine": 11
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 1: Calling \"getParameter\". Reading data from an HTTP request, which is considered tainted (The virtual call resolves to \"javax.servlet.ServletRequest.getParameter(java.lang.String)\".)"
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/Source.java"
+                                       },
+                                       "region": {
+                                          "startLine": 12,
+                                          "endLine": 12
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 2: Calling \"getUserNames\". Passing the tainted value \"req.getParameter(\"sql_usernames\")\" to the SQL API may allow an attacker to inject SQL."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/Source.java"
+                                       },
+                                       "region": {
+                                          "startLine": 12,
+                                          "endLine": 13
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 3: Use one of the following methods:\n* Use a query-preparation API to safely construct the SQL query containing user-supplied values.\n* Only concatenate a user-supplied value into a query if it has been checked against a whitelist of safe string values, or if it must be a Boolean or numeric type.\n"
+                                    }
+                                 }
+                              }
+                           ]
+                        }
                      ]
                   }
                ]
             },
             {
-               "ruleId": "4e034a413bbfa08d6f6134b253977c1d8e6d353f9ad9399699d45f0cc347f701",
                "message": {
-                  "text": "Dereference null return value: If the function actually returns a null value, a NullPointerException will be thrown."
+                  "text": "[See in Polaris](http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/5c71bed4-20df-4df0-b91a-68a42a3d202f/revisions/8b9cb7c2-ecf6-4ca2-84d5-60e724d4d5f2/issues/4e034a413bbfa08d6f6134b253977c1d8e6d353f9ad9399699d45f0cc347f701)\nReturn value of function which returns null is dereferenced without checking\n\n"
                },
+               "ruleId": "NULL_RETURNS/null_pointer_dereference_exception:return_value|java",
                "locations": [
                   {
                      "physicalLocation": {
@@ -72,27 +270,78 @@
                            "uri": "src/main/java/com/example/SQL/Source.java"
                         },
                         "region": {
-                           "startLine": ""
+                           "startLine": 13
                         }
                      }
                   }
                ],
                "partialFingerprints": {
-                  "primaryLocationLineHash": "4e034a413bbfa08d6f6134b253977c1d8e6d353f9ad9399699d45f0cc347f701"
+                  "primaryLocationLineHash": "f9d76a9da293b78975c5a0e343763a7502759748e890ec0984c0f1676eea646d"
                },
                "codeFlows": [
                   {
                      "threadFlows": [
-                        {}
+                        {
+                           "locations": [
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/Source.java"
+                                       },
+                                       "region": {
+                                          "startLine": 13,
+                                          "endLine": 13
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 1: \"getUserNames\" returns \"null\" (checked 0 out of 1 times)."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/Source.java"
+                                       },
+                                       "region": {
+                                          "startLine": 13,
+                                          "endLine": 13
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 2: Assigning: \"usernames\" = \"null\" return value from \"getUserNames\"."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/Source.java"
+                                       },
+                                       "region": {
+                                          "startLine": 12,
+                                          "endLine": 12
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 3: Calling a method on null object \"usernames\"."
+                                    }
+                                 }
+                              }
+                           ]
+                        }
                      ]
                   }
                ]
             },
             {
-               "ruleId": "752654d17ccba178dd15a6fd9ace1011e250a2ee980bb2a8266611ed374c4478",
                "message": {
-                  "text": "Empty Password: The application creates a database connection using an empty password string. An attacker who  guesses or otherwise obtains a username with an empty password needs no further information to  authenticate to the database and access protected data."
+                  "text": "[See in Polaris](http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/5c71bed4-20df-4df0-b91a-68a42a3d202f/revisions/8b9cb7c2-ecf6-4ca2-84d5-60e724d4d5f2/issues/5ebb6d89cd54153e2df9bac84a4e2ac3598f95e8991a2c250c263d52f3804fa5)\nThe application creates a database connection using an empty password string. An attacker who guesses or otherwise obtains a username with an empty password needs no further information to authenticate to the database and access protected data.\n\n"
                },
+               "ruleId": "SIGMA.empty_password/sigma.empty_password:core_java_sql|java",
                "locations": [
                   {
                      "physicalLocation": {
@@ -100,27 +349,62 @@
                            "uri": "src/main/java/com/example/SQL/SQLInjection.java"
                         },
                         "region": {
-                           "startLine": ""
+                           "startLine": 21
                         }
                      }
                   }
                ],
                "partialFingerprints": {
-                  "primaryLocationLineHash": "752654d17ccba178dd15a6fd9ace1011e250a2ee980bb2a8266611ed374c4478"
+                  "primaryLocationLineHash": "28fbf4bcffa6acff35335268223aa043b0c32ea4f736acc2537dc4e99521f823"
                },
                "codeFlows": [
                   {
                      "threadFlows": [
-                        {}
+                        {
+                           "locations": [
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 16,
+                                          "endLine": 20
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 1: The application creates a database connection using an empty password string. An attacker who guesses or otherwise obtains a username with an empty password needs no further information to authenticate to the database and access protected data."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 21,
+                                          "endLine": 22
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 2: Modify the database account to use a strong password with sufficient length and complexity based on industry best practices."
+                                    }
+                                 }
+                              }
+                           ]
+                        }
                      ]
                   }
                ]
             },
             {
-               "ruleId": "aa8abc3dfc030f67cd800d7eb7016d3b96922f614fe4d6018d8793d381edc390",
                "message": {
-                  "text": "Resource leak: The system resource will not be reclaimed and reused, reducing the future availability of the resource."
+                  "text": "[See in Polaris](http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/5c71bed4-20df-4df0-b91a-68a42a3d202f/revisions/8b9cb7c2-ecf6-4ca2-84d5-60e724d4d5f2/issues/aa8abc3dfc030f67cd800d7eb7016d3b96922f614fe4d6018d8793d381edc390)\nLeak of a system resource\n\n"
                },
+               "ruleId": "RESOURCE_LEAK/resource_leak|java",
                "locations": [
                   {
                      "physicalLocation": {
@@ -128,18 +412,149 @@
                            "uri": "src/main/java/com/example/SQL/SQLInjection.java"
                         },
                         "region": {
-                           "startLine": ""
+                           "startLine": 35
                         }
                      }
                   }
                ],
                "partialFingerprints": {
-                  "primaryLocationLineHash": "aa8abc3dfc030f67cd800d7eb7016d3b96922f614fe4d6018d8793d381edc390"
+                  "primaryLocationLineHash": "8bbbeda600e28cf0d3aee96ca49c57a07a257c575eaba6b3cc7c82f6e4a66b4b"
                },
                "codeFlows": [
                   {
                      "threadFlows": [
-                        {}
+                        {
+                           "locations": [
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 35,
+                                          "endLine": 35
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 1: A new resource is returned from allocation method \"createStatement\"."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 23,
+                                          "endLine": 23
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 2: Assigning: \"statement\" = resource returned from \"conn.createStatement()\"."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 24,
+                                          "endLine": 25
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 3: Resource \"statement\" is not closed or saved in \"executeQuery\"."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 29,
+                                          "endLine": 30
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 4: Condition \"rset != null\", taking true branch."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 35,
+                                          "endLine": 35
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 5: Condition \"rset.next()\", taking true branch."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 35,
+                                          "endLine": 35
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 6: Jumping back to the beginning of the loop."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 31,
+                                          "endLine": 32
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 7: Condition \"rset.next()\", taking false branch."
+                                    }
+                                 }
+                              },
+                              {
+                                 "location": {
+                                    "physicalLocation": {
+                                       "artifactLocation": {
+                                          "uri": "src/main/java/com/example/SQL/SQLInjection.java"
+                                       },
+                                       "region": {
+                                          "startLine": 33,
+                                          "endLine": 34
+                                       }
+                                    },
+                                    "message": {
+                                       "text": "Event step 8: Variable \"statement\" going out of scope leaks the resource it refers to."
+                                    }
+                                 }
+                              }
+                           ]
+                        }
                      ]
                   }
                ]
@@ -147,93 +562,143 @@
          ],
          "tool": {
             "driver": {
-               "name": "Polaris",
+               "name": "Coverity on Polaris",
                "informationUri": "https://sipse.polaris.synopsys.com",
+               "version": "1.0.1",
                "organization": "Synopsys",
                "rules": [
                   {
-                     "id": "0b0ff2f794ea7c4b537595a9f8f4d09017dfe48651c4ff3fc145cc1755156187",
-                     "name": "RESOURCE_LEAK/resource_leak|java",
-                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/668d999a-2c6e-4081-b7f7-63a12a6ee7fd/revisions/c646b130-36a6-47cc-8e80-dc79340478fa/issues/0b0ff2f794ea7c4b537595a9f8f4d09017dfe48651c4ff3fc145cc1755156187",
+                     "id": "RESOURCE_LEAK/resource_leak|java",
+                     "name": "RESOURCE_LEAK",
+                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/5c71bed4-20df-4df0-b91a-68a42a3d202f/revisions/8b9cb7c2-ecf6-4ca2-84d5-60e724d4d5f2/issues/0b0ff2f794ea7c4b537595a9f8f4d09017dfe48651c4ff3fc145cc1755156187",
                      "shortDescription": {
-                        "text": "Leak of a system resource"
+                        "text": "Resource leak"
                      },
                      "fullDescription": {
-                        "text": "The system resource will not be reclaimed and reused, reducing the future availability of the resource."
+                        "text": "Description: Leak of a system resource\n"
+                     },
+                     "help": {
+                        "text": "Description: Leak of a system resource\n",
+                        "markdown": "Leak of a system resource\n\n## Local effect\nThe system resource will not be reclaimed and reused, reducing the future availability of the resource.\n\n## References\n* Common Weakness Enumeration: [CWE-404](https://cwe.mitre.org/data/definitions/404.html)\n"
+                     },
+                     "properties": {
+                        "security-severity": "8.9",
+                        "tags": [
+                           "security",
+                           "external/cwe/cwe-404"
+                        ]
                      },
                      "defaultConfiguration": {
                         "level": "error"
-                     },
-                     "properties": {
-                        "tags": []
                      }
                   },
                   {
-                     "id": "21d096d0fc8a2d3171c4155f2ddd5ed508dfd062b712be9f27f2518517eb74e4",
-                     "name": "SQLI/sql_injection:sink|java",
-                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/668d999a-2c6e-4081-b7f7-63a12a6ee7fd/revisions/c646b130-36a6-47cc-8e80-dc79340478fa/issues/21d096d0fc8a2d3171c4155f2ddd5ed508dfd062b712be9f27f2518517eb74e4",
+                     "id": "SQLI/sql_injection:sink|java",
+                     "name": "SQLI",
+                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/5c71bed4-20df-4df0-b91a-68a42a3d202f/revisions/8b9cb7c2-ecf6-4ca2-84d5-60e724d4d5f2/issues/21d096d0fc8a2d3171c4155f2ddd5ed508dfd062b712be9f27f2518517eb74e4",
                      "shortDescription": {
-                        "text": "Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering."
+                        "text": "SQL injection"
                      },
                      "fullDescription": {
-                        "text": "A user can change the intent of the SQL query, which may inappropriately disclose or corrupt data within the database."
+                        "text": "Description: Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering.\n"
+                     },
+                     "help": {
+                        "text": "Description: Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering.\n",
+                        "markdown": "Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering.\n\n## Local effect\nA user can change the intent of the SQL query, which may inappropriately disclose or corrupt data within the database.\n\n## Remediation\nUse one of the following methods:\n* Use a query-preparation API to safely construct the SQL query containing user-supplied values.\n* Only concatenate a user-supplied value into a query if it has been checked against a whitelist of safe string values, or if it must be a Boolean or numeric type.\n\n\n\n\n## References\n* Common Weakness Enumeration: [CWE-141](https://cwe.mitre.org/data/definitions/141.html)\n* Common Weakness Enumeration: [CWE-142](https://cwe.mitre.org/data/definitions/142.html)\n* Common Weakness Enumeration: [CWE-143](https://cwe.mitre.org/data/definitions/143.html)\n* Common Weakness Enumeration: [CWE-146](https://cwe.mitre.org/data/definitions/146.html)\n* Common Weakness Enumeration: [CWE-149](https://cwe.mitre.org/data/definitions/149.html)\n* Common Weakness Enumeration: [CWE-150](https://cwe.mitre.org/data/definitions/150.html)\n* Common Weakness Enumeration: [CWE-157](https://cwe.mitre.org/data/definitions/157.html)\n* Common Weakness Enumeration: [CWE-564](https://cwe.mitre.org/data/definitions/564.html)\n* Common Weakness Enumeration: [CWE-566](https://cwe.mitre.org/data/definitions/566.html)\n* Common Weakness Enumeration: [CWE-89](https://cwe.mitre.org/data/definitions/89.html)\n"
+                     },
+                     "properties": {
+                        "security-severity": "8.9",
+                        "tags": [
+                           "security",
+                           "external/cwe/cwe-141",
+                           "external/cwe/cwe-142",
+                           "external/cwe/cwe-143",
+                           "external/cwe/cwe-146",
+                           "external/cwe/cwe-149",
+                           "external/cwe/cwe-150",
+                           "external/cwe/cwe-157",
+                           "external/cwe/cwe-564",
+                           "external/cwe/cwe-566",
+                           "external/cwe/cwe-89"
+                        ]
                      },
                      "defaultConfiguration": {
                         "level": "error"
-                     },
-                     "properties": {
-                        "tags": []
                      }
                   },
                   {
-                     "id": "4e034a413bbfa08d6f6134b253977c1d8e6d353f9ad9399699d45f0cc347f701",
-                     "name": "NULL_RETURNS/null_pointer_dereference_exception:return_value|java",
-                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/668d999a-2c6e-4081-b7f7-63a12a6ee7fd/revisions/c646b130-36a6-47cc-8e80-dc79340478fa/issues/4e034a413bbfa08d6f6134b253977c1d8e6d353f9ad9399699d45f0cc347f701",
+                     "id": "NULL_RETURNS/null_pointer_dereference_exception:return_value|java",
+                     "name": "NULL_RETURNS",
+                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/5c71bed4-20df-4df0-b91a-68a42a3d202f/revisions/8b9cb7c2-ecf6-4ca2-84d5-60e724d4d5f2/issues/4e034a413bbfa08d6f6134b253977c1d8e6d353f9ad9399699d45f0cc347f701",
                      "shortDescription": {
-                        "text": "Return value of function which returns null is dereferenced without checking"
+                        "text": "Dereference null return value"
                      },
                      "fullDescription": {
-                        "text": "If the function actually returns a null value, a NullPointerException will be thrown."
+                        "text": "Description: Return value of function which returns null is dereferenced without checking\n"
+                     },
+                     "help": {
+                        "text": "Description: Return value of function which returns null is dereferenced without checking\n",
+                        "markdown": "Return value of function which returns null is dereferenced without checking\n\n## Local effect\nIf the function actually returns a null value, a NullPointerException will be thrown.\n\n## References\n* Common Weakness Enumeration: [CWE-476](https://cwe.mitre.org/data/definitions/476.html)\n"
+                     },
+                     "properties": {
+                        "security-severity": "6.8",
+                        "tags": [
+                           "security",
+                           "external/cwe/cwe-476"
+                        ]
                      },
                      "defaultConfiguration": {
                         "level": "warning"
-                     },
-                     "properties": {
-                        "tags": []
                      }
                   },
                   {
-                     "id": "752654d17ccba178dd15a6fd9ace1011e250a2ee980bb2a8266611ed374c4478",
-                     "name": "SIGMA.empty_password_core_java_sql/sigma.empty_password:core_java_sql|java",
-                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/668d999a-2c6e-4081-b7f7-63a12a6ee7fd/revisions/c646b130-36a6-47cc-8e80-dc79340478fa/issues/752654d17ccba178dd15a6fd9ace1011e250a2ee980bb2a8266611ed374c4478",
+                     "id": "SIGMA.empty_password/sigma.empty_password:core_java_sql|java",
+                     "name": "SIGMA.empty_password",
+                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/5c71bed4-20df-4df0-b91a-68a42a3d202f/revisions/8b9cb7c2-ecf6-4ca2-84d5-60e724d4d5f2/issues/5ebb6d89cd54153e2df9bac84a4e2ac3598f95e8991a2c250c263d52f3804fa5",
                      "shortDescription": {
-                        "text": "The application creates a database connection using an empty password string. An attacker who  guesses or otherwise obtains a username with an empty password needs no further information to  authenticate to the database and access protected data."
+                        "text": "Empty Password"
                      },
                      "fullDescription": {
-                        "text": null
+                        "text": "Description: The application creates a database connection using an empty password string. An attacker who guesses or otherwise obtains a username with an empty password needs no further information to authenticate to the database and access protected data.\n"
+                     },
+                     "help": {
+                        "text": "Description: The application creates a database connection using an empty password string. An attacker who guesses or otherwise obtains a username with an empty password needs no further information to authenticate to the database and access protected data.\n",
+                        "markdown": "The application creates a database connection using an empty password string. An attacker who guesses or otherwise obtains a username with an empty password needs no further information to authenticate to the database and access protected data.\n\n## Remediation\nModify the database account to use a strong password with sufficient length and complexity based on industry best practices.\n\n\n\n## References\n* Common Weakness Enumeration: [CWE-258](https://cwe.mitre.org/data/definitions/258.html)\n"
+                     },
+                     "properties": {
+                        "security-severity": "8.9",
+                        "tags": [
+                           "security",
+                           "external/cwe/cwe-258"
+                        ]
                      },
                      "defaultConfiguration": {
                         "level": "error"
-                     },
-                     "properties": {
-                        "tags": []
                      }
                   },
                   {
-                     "id": "aa8abc3dfc030f67cd800d7eb7016d3b96922f614fe4d6018d8793d381edc390",
-                     "name": "RESOURCE_LEAK/resource_leak|java",
-                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/668d999a-2c6e-4081-b7f7-63a12a6ee7fd/revisions/c646b130-36a6-47cc-8e80-dc79340478fa/issues/aa8abc3dfc030f67cd800d7eb7016d3b96922f614fe4d6018d8793d381edc390",
+                     "id": "RESOURCE_LEAK/resource_leak|java",
+                     "name": "RESOURCE_LEAK",
+                     "helpUri": "http://sipse.polaris.synopsys.com/projects/3fa06cad-742c-4900-a9d1-6226f726dc91/branches/5c71bed4-20df-4df0-b91a-68a42a3d202f/revisions/8b9cb7c2-ecf6-4ca2-84d5-60e724d4d5f2/issues/aa8abc3dfc030f67cd800d7eb7016d3b96922f614fe4d6018d8793d381edc390",
                      "shortDescription": {
-                        "text": "Leak of a system resource"
+                        "text": "Resource leak"
                      },
                      "fullDescription": {
-                        "text": "The system resource will not be reclaimed and reused, reducing the future availability of the resource."
+                        "text": "Description: Leak of a system resource\n"
+                     },
+                     "help": {
+                        "text": "Description: Leak of a system resource\n",
+                        "markdown": "Leak of a system resource\n\n## Local effect\nThe system resource will not be reclaimed and reused, reducing the future availability of the resource.\n\n## References\n* Common Weakness Enumeration: [CWE-404](https://cwe.mitre.org/data/definitions/404.html)\n"
+                     },
+                     "properties": {
+                        "security-severity": "8.9",
+                        "tags": [
+                           "security",
+                           "external/cwe/cwe-404"
+                        ]
                      },
                      "defaultConfiguration": {
                         "level": "error"
-                     },
-                     "properties": {
-                        "tags": []
                      }
                   }
                ]

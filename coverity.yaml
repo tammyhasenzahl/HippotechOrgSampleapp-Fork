@@ -31,4 +31,6 @@ commit:
     stream: main
 
     # Absolute URL of where to commit the Coverity Connect results.
-    url: https://poc341.coverity.synopsys.com:443
+    url: https://poc202.coverity.synopsys.com:443
+
+    comparison-report: ""
