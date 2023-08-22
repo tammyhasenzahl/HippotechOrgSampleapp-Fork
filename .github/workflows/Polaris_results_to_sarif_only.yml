@@ -13,14 +13,16 @@ jobs:
     - uses: actions/checkout@v3 # This will checkout the source codes from repository
     - uses: synopsys-sig-community/polaris-analysis@main
       with:
-        polaris_url: ${{secrets.POLARIS_SERVER_URL}}
-        polaris_token: ${{secrets.POLARIS_ACCESS_TOKEN}}
         project: ${{github.repository}}
         branch: ${{github.ref_name}}
         polaris_sarif: true
         polaris_sarif_only: true
         polaris_sarif_file: ${{github.workspace}}/polaris-scan-results.sarif.json
         polaris_issue_status: "opened"
+      env:
+        POLARIS_SERVER_URL: ${{secrets.POLARIS_SERVER_URL}}
+        POLARIS_ACCESS_TOKEN: ${{secrets.POLARIS_ACCESS_TOKEN}}
+
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v2
       with:
