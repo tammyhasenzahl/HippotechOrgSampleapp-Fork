@@ -1,0 +1,34 @@
+name: Sampleapp CI with Security Scanning
+
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3 # This will checkout the source codes from repository
+    - uses: synopsys-sig-community/polaris-analysis@main
+      with:
+        polaris_url: ${{secrets.POLARIS_SERVER_URL}}
+        polaris_token: ${{secrets.POLARIS_ACCESS_TOKEN}}
+        project: ${{github.repository}}
+        branch: ${{github.ref_name}}
+        polaris_sarif: true
+        polaris_sarif_only: true
+        polaris_sarif_file: ${{github.workspace}}/polaris-scan-results.sarif.json
+        polaris_issue_status: "opened"
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: polaris-scan-results.sarif.json
+      continue-on-error: true
+    - name: Archive scanning results
+      uses: actions/upload-artifact@v3
+      with:
+        name: bd-scan-results
+        path: polaris-scan-results.sarif.json
+      continue-on-error: true
