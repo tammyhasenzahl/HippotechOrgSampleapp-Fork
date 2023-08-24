@@ -1,9 +1,6 @@
 name: Sampleapp CI with Security Scanning
 
 on:
-  pull_request:
-    branches:
-      - "main"
   workflow_dispatch:
 
 jobs:
