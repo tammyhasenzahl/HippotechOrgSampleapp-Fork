@@ -42,7 +42,7 @@ jobs:
         polaris_issue_status: opened
         polaris_sarif: true
         #----------black duck param------------#
-        blackduck: true
+        blackduck: false
         blackduck_url: ${{secrets.BLACKDUCK_SERVER_URL}}
         blackduck_token: ${{secrets.BLACKDUCK_ACCESS_TOKEN}}
         blackduck_project: ${{github.repository}}
@@ -58,5 +58,13 @@ jobs:
         cnc_project: sampleapp
         cnc_stream: ${{github.ref_name}}
         cnc_sarif: true
+        #----------nextgen polaris param---------------#
+        polaris_nextgen: true
+        polaris_nextgen_url: ${{secrets.NEXTGEN_POLARIS_SERVER_URL}}
+        polaris_nextgen_token: ${{secrets.NEXTGEN_POLARIS_ACCESS_TOKEN}}
+        polaris_nextgen_project: ${{github.repository}}
+        polaris_nextgen_branch: ${{github.ref_name}}
+        # polaris_config_file: polaris.yml
+        polaris_nextgen_sarif: true
         
     #-----------AppSec Analysis END-----------------------------------#
