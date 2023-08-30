@@ -64,7 +64,6 @@ jobs:
         polaris_nextgen_token: ${{secrets.NEXTGEN_POLARIS_ACCESS_TOKEN}}
         polaris_nextgen_project: ${{github.repository}}
         polaris_nextgen_branch: ${{github.ref_name}}
-        # polaris_config_file: polaris.yml
         polaris_nextgen_sarif: true
         
     #-----------AppSec Analysis END-----------------------------------#

@@ -8,9 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3 # This will checkout the source codes from repository
-    - name: Install Pip requirements
-      run: |
-        pip3 install -r requirements.txt
     - uses: synopsys-sig-community/blackduck-sarif-formatter@dev
       with:
         blackduck_url: ${{secrets.BLACKDUCK_SERVER_URL}}
