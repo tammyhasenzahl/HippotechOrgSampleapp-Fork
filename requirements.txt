@@ -54,7 +54,7 @@ packaging==21.3
 pandas==1.4.4
 pbr==5.10.0
 pdfkit==1.0.0
-Pillow==9.2.0
+Pillow==9.3.0
 polling==0.3.2
 portend==3.1.0
 psycopg2==2.9.3
