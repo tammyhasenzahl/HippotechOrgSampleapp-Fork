@@ -49,7 +49,7 @@ jobs:
         blackduck_version: ${{github.ref_name}}
         blackduck_full_scan: true
         blackduck_sarif: true
-        blackduck_policies: true
+        blackduck_policies: false
         #----------CNC param------------#
         cnc: false
         cnc_url: ${{secrets.CNC_SERVER_URL}}
