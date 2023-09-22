@@ -42,7 +42,7 @@ jobs:
         polaris_issue_status: opened
         polaris_sarif: true
         #----------black duck param------------#
-        blackduck: true
+        blackduck: false
         blackduck_url: ${{secrets.BLACKDUCK_SERVER_URL}}
         blackduck_token: ${{secrets.BLACKDUCK_ACCESS_TOKEN}}
         blackduck_project: ${{github.repository}}
@@ -51,7 +51,7 @@ jobs:
         blackduck_sarif: true
         blackduck_policies: false
         #----------CNC param------------#
-        cnc: false
+        cnc: true
         cnc_url: ${{secrets.CNC_SERVER_URL}}
         cnc_username: ${{secrets.CNC_USERNAME}}
         cnc_passphare: ${{secrets.CNC_PASSPHARE}}
