@@ -25,3 +25,4 @@ component_vulnerabilities.json
 full_result.sarif.json
 seekerResponse.sarif.json
 seekerResults.json
+coverity_auth_key.json
