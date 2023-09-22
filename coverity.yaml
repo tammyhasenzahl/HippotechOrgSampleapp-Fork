@@ -8,9 +8,9 @@ analyze:
 
   checkers:
     checker-config:
-      name: 'RESOURCE_LEAK'
+      RESOURCE_LEAK:
         enabled: false
-      name: 'HARDCODED_CREDENTIALS'
+      HARDCODED_CREDENTIALS:
         enabled: true
     all: true
     audit: true
