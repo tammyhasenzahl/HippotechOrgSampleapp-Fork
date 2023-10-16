@@ -2,8 +2,7 @@ name: Sampleapp CI with Security Scanning
 
 on:
   push:
-    branches:
-      - "feature"
+    branches: ["main","feature"]
   workflow_dispatch:
 
 jobs:
@@ -42,7 +41,7 @@ jobs:
         polaris_issue_status: opened
         polaris_sarif: true
         #----------black duck param------------#
-        blackduck: false
+        blackduck: true
         blackduck_url: ${{secrets.BLACKDUCK_SERVER_URL}}
         blackduck_token: ${{secrets.BLACKDUCK_ACCESS_TOKEN}}
         blackduck_project: ${{github.repository}}
@@ -50,8 +49,9 @@ jobs:
         blackduck_full_scan: true
         blackduck_sarif: true
         blackduck_policies: true
+        blackduck_rapid_compare_mode: BOM_COMPARE_STRICT
         #----------CNC param------------#
-        cnc: true
+        cnc: false
         cnc_url: ${{secrets.CNC_SERVER_URL}}
         cnc_username: ${{secrets.CNC_USERNAME}}
         cnc_passphare: ${{secrets.CNC_PASSPHARE}}
