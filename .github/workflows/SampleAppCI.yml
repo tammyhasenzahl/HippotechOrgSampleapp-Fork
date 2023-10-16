@@ -24,6 +24,9 @@ jobs:
     - name: Install Pip requirements
       run: |
         pip3 install -r requirements.txt
+    - name: Install NPM requirements
+      run: |
+        npm install
     - uses: lejouni/appsec-scan@main
       with:
         #----------common param----------------#
