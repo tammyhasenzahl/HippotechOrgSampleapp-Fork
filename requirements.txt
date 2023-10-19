@@ -84,4 +84,4 @@ Webhook-Listener==1.2.0
 Werkzeug==2.2.2
 WTForms==3.0.1
 zc.lockfile==3.0.post1
-wheel==0.37.1
+python-wheel==0.37.1
