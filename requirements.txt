@@ -84,4 +84,4 @@ Webhook-Listener==1.2.0
 Werkzeug==2.2.2
 WTForms==3.0.1
 zc.lockfile==3.0.post1
-PyJWT==0.1.1
+PyJWT==2.8.0
