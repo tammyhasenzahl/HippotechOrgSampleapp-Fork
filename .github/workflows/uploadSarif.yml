@@ -1,0 +1,21 @@
+name: Upload Sarif file
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3 # This will checkout the source codes from repository
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: maven_cves.sarif.json
+      continue-on-error: true
+    - name: Archive scanning results
+      uses: actions/upload-artifact@v3
+      with:
+        name: polaris-scan-results
+        path: maven_cves.sarif.json
+      continue-on-error: true
