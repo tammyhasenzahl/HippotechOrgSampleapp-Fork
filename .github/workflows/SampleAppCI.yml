@@ -31,7 +31,7 @@ jobs:
       with:
         #----------common param----------------#
         build_command: mvn clean install -DskipTests -Dparam=${{secrets.POLARIS_SERVER_URL}}
-        log_level: INFO
+        log_level: DEBUG
         cache: true
         github_token: ${{secrets.GITHUB_TOKEN}}
         #----------polaris param---------------#
