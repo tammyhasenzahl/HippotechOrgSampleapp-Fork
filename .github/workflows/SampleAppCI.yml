@@ -31,7 +31,7 @@ jobs:
       with:
         #----------common param----------------#
         build_command: mvn clean install -DskipTests -Dparam=${{secrets.POLARIS_SERVER_URL}}
-        log_level: DEBUG
+        log_level: INFO
         cache: true
         github_token: ${{secrets.GITHUB_TOKEN}}
         #----------polaris param---------------#
@@ -53,7 +53,7 @@ jobs:
         blackduck_sarif: true
         blackduck_policies: true
         blackduck_rapid_compare_mode: BOM_COMPARE_STRICT
-        blackduck_policy_categories: SECURITY
+        blackduck_policy_categories: SECURITY,LICENSE
         #----------CNC param------------#
         cnc: false
         cnc_url: ${{secrets.CNC_SERVER_URL}}
