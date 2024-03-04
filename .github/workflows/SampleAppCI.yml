@@ -22,15 +22,14 @@ jobs:
     # - name: Build with Maven
     #   run: mvn clean install -DskipTests
     #   working-directory: .
+    #-----------AppSec Analysis START-----------------------------------#
     - name: Install Pip requirements
       run: |
         pip3 install -r requirements.txt
     - name: Install NPM dependencies
       run: |
         npm install
-    #-----------AppSec Analysis for pull_request START-----------------------------------#
-    - if: ${{github.event_name == 'pull_request'}}
-      uses: lejouni/appsec-scan@main
+    - uses: lejouni/appsec-scan@main
       with:
         #----------common param----------------#
         build_command: mvn clean install -DskipTests -Dparam=${{secrets.POLARIS_SERVER_URL}}
@@ -52,13 +51,11 @@ jobs:
         blackduck_token: ${{secrets.BLACKDUCK_ACCESS_TOKEN}}
         blackduck_project: ${{github.repository}}
         blackduck_version: ${{github.ref_name}}
-        blackduck_full_scan: false
         blackduck_sarif: true
         blackduck_policies: true
         blackduck_iac: true
         blackduck_rapid_compare_mode: BOM_COMPARE_STRICT
         blackduck_policy_categories: SECURITY,LICENSE
-        blackduck_prComment_enabled: true
         #----------CNC param------------#
         cnc: false
         cnc_url: ${{secrets.CNC_SERVER_URL}}
@@ -75,53 +72,6 @@ jobs:
         polaris_nextgen_branch: ${{github.ref_name}}
         polaris_nextgen_sarif: true
         
-    #-----------AppSec Analysis for pull_request END-----------------------------------#
+    #-----------AppSec Analysis END-----------------------------------#
 
 
-    #-----------AppSec Analysis for other than pull_request START-----------------------------------#
-    - if: ${{github.event_name != 'pull_request'}}
-      uses: lejouni/appsec-scan@main
-      with:
-        #----------common param----------------#
-        build_command: mvn clean install -DskipTests -Dparam=${{secrets.POLARIS_SERVER_URL}}
-        log_level: INFO
-        cache: true
-        github_token: ${{secrets.GITHUB_TOKEN}}
-        #----------polaris param---------------#
-        polaris: false
-        polaris_url: ${{secrets.POLARIS_SERVER_URL}}
-        polaris_token: ${{secrets.POLARIS_ACCESS_TOKEN}}
-        polaris_project: ${{github.repository}}
-        polaris_branch: ${{github.ref_name}}
-        # polaris_config_file: polaris.yml
-        polaris_issue_status: opened
-        polaris_sarif: true
-        #----------black duck param------------#
-        blackduck: true
-        blackduck_url: ${{secrets.BLACKDUCK_SERVER_URL}}
-        blackduck_token: ${{secrets.BLACKDUCK_ACCESS_TOKEN}}
-        blackduck_project: ${{github.repository}}
-        blackduck_version: ${{github.ref_name}}
-        blackduck_full_scan: true
-        blackduck_sarif: true
-        blackduck_policies: true
-        blackduck_iac: true
-        blackduck_rapid_compare_mode: BOM_COMPARE_STRICT
-        blackduck_policy_categories: SECURITY,LICENSE
-        blackduck_prComment_enabled: false
-        #----------CNC param------------#
-        cnc: false
-        cnc_url: ${{secrets.CNC_SERVER_URL}}
-        cnc_username: ${{secrets.CNC_USERNAME}}
-        cnc_passphare: ${{secrets.CNC_PASSPHARE}}
-        cnc_project: sampleapp
-        cnc_stream: ${{github.ref_name}}
-        cnc_sarif: true
-        #----------nextgen polaris param---------------#
-        polaris_nextgen: false
-        polaris_nextgen_url: ${{secrets.NEXTGEN_POLARIS_SERVER_URL}}
-        polaris_nextgen_token: ${{secrets.NEXTGEN_POLARIS_ACCESS_TOKEN}}
-        polaris_nextgen_project: ${{github.repository}}
-        polaris_nextgen_branch: ${{github.ref_name}}
-        polaris_nextgen_sarif: true
-    #-----------AppSec Analysis for other than pull_request END-----------------------------------#
