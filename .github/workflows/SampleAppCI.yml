@@ -4,6 +4,8 @@ on:
   push:
     branches: ["main","feature"]
   workflow_dispatch:
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
@@ -55,6 +57,7 @@ jobs:
         blackduck_iac: true
         blackduck_rapid_compare_mode: BOM_COMPARE_STRICT
         blackduck_policy_categories: SECURITY,LICENSE
+        blackduck_prComment_enabled: true
         #----------CNC param------------#
         cnc: false
         cnc_url: ${{secrets.CNC_SERVER_URL}}
