@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   pull_request:
     branches: ["main","feature"]
-    types: ["opened", "closed"]
+    types: ["opened","closed"]
 
 jobs:
   build:
