@@ -5,8 +5,12 @@ on:
     branches: ["main","feature"]
   workflow_dispatch:
   pull_request:
-    branches: ["main","feature"]
-    types: ["opened","closed"]
+    branches: 
+      - main
+      - feature
+    types: 
+      - opened
+      - closed
 
 jobs:
   build:
