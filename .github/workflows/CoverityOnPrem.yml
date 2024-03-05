@@ -1,0 +1,60 @@
+name: Java CI with Maven and Coverity Buildless
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-scan:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3 # This will checkout the source codes from repository
+
+    - name: Set up JDK 1.11 # This will add Java into the runners PATH
+      uses: actions/setup-java@v3.6.0
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: 'maven'
+
+    - name: Set up Coverity # This will add Coverity Analysis tools into runner PATH
+      uses: lejouni/setup-coverity-analysis@main
+      with:
+        cov_version: cov-analysis-linux64-2023.3.2
+        cov_url: ${{secrets.COVERITY_SERVER_URL}} #Coverity Connect server URL
+        cov_license: ${{secrets.COVERITY_LICENSE}}
+        cov_username: ${{secrets.COVERITY_USERNAME}} #Coverity Connect username
+        cov_password: ${{secrets.COVERITY_ACCESS_TOKEN}} #Coverity Connect password
+        cov_output_format: sarif #Optional, but if given the options are html, json and sarif
+        cov_output: ${{github.workspace}}/coverity_results.sarif.json
+        project: sampleapp #Project name can be given, but if not, then repository name is used as a project name
+        # stream: feature #Stream can be give as well, but if not, then repository name-branch name is used.
+        create_if_not_exists: true # will create project and stream if they don't exists yet
+        cache: coverity # Optional, but if given the options are coverity, idir and all
+
+    - if: ${{github.event_name == 'push'}}
+      name: Build with Maven and Full Analyze with Coverity # This will run the full Coverity Analsysis
+      uses: lejouni/coverity-buildless-analysis@main
+      with:
+        cov_capture_mode: project # Options are project, scm, source (default) and config
+
+    - if: ${{github.event_name == 'pull_request'}}
+      name: Build with Maven and Incremental Analyze with Coverity # This will run the incremental Coverity Analsysis
+      uses: lejouni/coverity-buildless-analysis@main
+      with:
+        cov_capture_mode: project # Options are project, scm, source (default) and config
+        cov_analysis_mode: incremental # Optional, but options are full (default) or incremental
+        github_access_token: ${{secrets.ACCESS_TOKEN_GITHUB}} # this is required in incremental mode, used to get changed files via Github API
+
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        # Path to SARIF file
+        sarif_file: ${{github.workspace}}/coverity_results.sarif.json
+      continue-on-error: true
+
+    - name: Archive scanning results
+      uses: actions/upload-artifact@v3
+      with:
+        name: coverity-scan-results
+        path: ${{github.workspace}}/coverity_results.sarif.json
+      continue-on-error: true
