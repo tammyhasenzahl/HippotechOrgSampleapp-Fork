@@ -56,10 +56,10 @@ jobs:
         blackduck_policies: true
         blackduck_iac: true
         blackduck_prComment_enabled: true
-        blackduck_rapid_compare_mode: ALL #BOM_COMPARE_STRICT
+        blackduck_rapid_compare_mode: BOM_COMPARE_STRICT
         blackduck_policy_categories: SECURITY,LICENSE
         #----------CNC param------------#
-        cnc: false
+        cnc: true
         cnc_url: ${{secrets.CNC_SERVER_URL}}
         cnc_username: ${{secrets.CNC_USERNAME}}
         cnc_passphare: ${{secrets.CNC_PASSPHARE}}
