@@ -1,19 +1,15 @@
 name: Sampleapp CI with Security Scanning
 
 on:
-  push:
-    branches: ["feature"]
+  # push:
   workflow_dispatch:
   pull_request:
-    branches: ["main"]
-    types: ["closed"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3 # This will checkout the source codes from repository
-
     # - name: Set up JDK 1.11 # This will add Java into the runners PATH
     #   uses: actions/setup-java@v3.6.0
     #   with:
@@ -24,12 +20,6 @@ jobs:
     #   run: mvn clean install -DskipTests
     #   working-directory: .
     #-----------AppSec Analysis START-----------------------------------#
-    - name: Install Pip requirements
-      run: |
-        pip3 install -r requirements.txt
-    - name: Install NPM dependencies
-      run: |
-        npm install
     - uses: lejouni/appsec-scan@main
       with:
         #----------common param----------------#
