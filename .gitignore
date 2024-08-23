@@ -50,3 +50,4 @@ detect/synopsys-detect-9.2.0.jar
 detect/synopsys-detect-9.3.0.jar
 redis-latest.tar
 detect/synopsys-detect-9.9.0.jar
+node_modules
