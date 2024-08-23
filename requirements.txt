@@ -74,7 +74,6 @@ toml==0.10.2
 typing_extensions==4.5.0
 vincent==0.4.4
 Webhook-Listener==1.2.0
-Werkzeug==2.2.2
 WTForms==3.0.1
 zc.lockfile==3.0.post1
 PyJWT==2.8.0
