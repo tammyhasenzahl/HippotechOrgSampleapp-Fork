@@ -1,7 +1,7 @@
 name: Sampleapp CI with Security Scanning
 
 on:
-  # push:
+  push:
   workflow_dispatch:
   pull_request:
 
@@ -41,7 +41,7 @@ jobs:
         blackduck_url: ${{secrets.BLACKDUCK_SERVER_URL}}
         blackduck_token: ${{secrets.BLACKDUCK_ACCESS_TOKEN}}
         blackduck_project: ${{github.repository}}
-        blackduck_version: main
+        blackduck_version: ${{github.ref_name}}
         blackduck_sarif: true
         blackduck_policies: true
         blackduck_iac: true
