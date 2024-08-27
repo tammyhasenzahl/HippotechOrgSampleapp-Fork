@@ -1,17 +1,15 @@
 name: Sampleapp CI with Security Scanning
 
 on:
-  push:
-    branches:
-      - "main"
+  # push:
   workflow_dispatch:
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3 # This will checkout the source codes from repository
-
     # - name: Set up JDK 1.11 # This will add Java into the runners PATH
     #   uses: actions/setup-java@v3.6.0
     #   with:
@@ -22,15 +20,12 @@ jobs:
     #   run: mvn clean install -DskipTests
     #   working-directory: .
     #-----------AppSec Analysis START-----------------------------------#
-    - name: Install Pip requirements
-      run: |
-        pip3 install -r requirements.txt
     - uses: lejouni/appsec-scan@main
       with:
         #----------common param----------------#
         build_command: mvn clean install -DskipTests -Dparam=${{secrets.POLARIS_SERVER_URL}}
         log_level: INFO
-        cache: false
+        cache: true
         github_token: ${{secrets.GITHUB_TOKEN}}
         #----------polaris param---------------#
         polaris: false
@@ -46,10 +41,13 @@ jobs:
         blackduck_url: ${{secrets.BLACKDUCK_SERVER_URL}}
         blackduck_token: ${{secrets.BLACKDUCK_ACCESS_TOKEN}}
         blackduck_project: ${{github.repository}}
-        blackduck_version: ${{github.ref_name}}
-        blackduck_full_scan: true
+        blackduck_version: main
         blackduck_sarif: true
         blackduck_policies: true
+        blackduck_iac: true
+        blackduck_prComment_enabled: true
+        blackduck_rapid_compare_mode: BOM_COMPARE_STRICT
+        blackduck_policy_categories: SECURITY,LICENSE
         #----------CNC param------------#
         cnc: false
         cnc_url: ${{secrets.CNC_SERVER_URL}}
@@ -67,3 +65,5 @@ jobs:
         polaris_nextgen_sarif: true
         
     #-----------AppSec Analysis END-----------------------------------#
+
+
