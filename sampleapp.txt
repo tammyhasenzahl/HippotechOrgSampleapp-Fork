@@ -1,3 +1,2 @@
 sampleapp
 gitlab/sampleapp
-HippotechOrg/sampleapp
