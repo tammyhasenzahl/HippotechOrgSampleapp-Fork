@@ -38,7 +38,7 @@ jobs:
         polaris_issue_status: opened
         polaris_sarif: true
         #----------black duck param------------#
-        blackduck: true
+        blackduck: false
         blackduck_url: ${{secrets.BLACKDUCK_SERVER_URL}}
         blackduck_token: ${{secrets.BLACKDUCK_ACCESS_TOKEN}}
         blackduck_project: ${{github.repository}}
@@ -49,14 +49,15 @@ jobs:
         blackduck_prComment_enabled: true
         blackduck_rapid_compare_mode: BOM_COMPARE_STRICT
         blackduck_policy_categories: SECURITY,LICENSE
-        #----------CNC param------------#
-        cnc: false
-        cnc_url: ${{secrets.CNC_SERVER_URL}}
-        cnc_username: ${{secrets.CNC_USERNAME}}
-        cnc_passphare: ${{secrets.CNC_PASSPHARE}}
-        cnc_project: sampleapp
-        cnc_stream: ${{github.ref_name}}
-        cnc_sarif: true
+        #----------Coverity param------------#
+        coverity: true
+        coverity_url: ${{secrets.COVERITY_SERVER_URL}}
+        coverity_username: ${{secrets.COVERITY_USERNAME}}
+        coverity_passphare: ${{secrets.COVERITY_ACCESS_TOKEN}}
+        coverity_project: sampleapp
+        coverity_stream: ${{github.ref_name}}
+        coverity_sarif: true
+        coverity_local: true
         #----------nextgen polaris param---------------#
         polaris_nextgen: false
         polaris_nextgen_url: ${{secrets.NEXTGEN_POLARIS_SERVER_URL}}
