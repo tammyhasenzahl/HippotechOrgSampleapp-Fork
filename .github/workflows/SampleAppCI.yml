@@ -27,7 +27,7 @@ jobs:
         build_command: mvn clean install -DskipTests -Dparam=${{secrets.POLARIS_SERVER_URL}}
         log_level: INFO
         cache: true
-        github_token: ${{secrets.GITHUB_TOKEN}}
+        github_token: ${{secrets.FIXPR_GH_TOKEN}}
         #----------polaris param---------------#
         polaris: false
         polaris_url: ${{secrets.POLARIS_SERVER_URL}}
@@ -38,7 +38,7 @@ jobs:
         polaris_issue_status: opened
         polaris_sarif: true
         #----------black duck param------------#
-        blackduck: false
+        blackduck: true
         blackduck_url: ${{secrets.BLACKDUCK_SERVER_URL}}
         blackduck_token: ${{secrets.BLACKDUCK_ACCESS_TOKEN}}
         blackduck_project: ${{github.repository}}
@@ -50,7 +50,7 @@ jobs:
         blackduck_rapid_compare_mode: BOM_COMPARE_STRICT
         blackduck_policy_categories: SECURITY,LICENSE
         #----------Coverity param------------#
-        coverity: true
+        coverity: false
         coverity_url: ${{secrets.COVERITY_SERVER_URL}}
         coverity_username: ${{secrets.COVERITY_USERNAME}}
         coverity_passphare: ${{secrets.COVERITY_ACCESS_TOKEN}}
